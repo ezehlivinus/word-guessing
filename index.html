@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Game</title>
+  </head>
+  <body>
+    <div class="container">
+        <br/>
+        <br/>
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8 shadow">
+                <h1>Word Guessing Game</h1>
+
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Welcome!</h4>
+                <p>
+                  Lists of words will be generated for you, among the generated words, one would be picked at random. <br> 
+                  Your task is to guess the word that was picked.
+                </p>
+                <hr>
+                <p class="mb-0">When you are ready click on start. Good luck.</p>
+            </div>
+    
+            <button type="button" onclick="start()" class="btn btn-primary">Start</button>
+            <br>
+            <br>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+        
+
+</div>
+      
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="./random-words/index.js"></script>
+
+    <script>
+      
+
+        const start = () => {
+          const randomWords = words(10);
+
+          userGuess = prompt(`Guess which word was picked from the listed words below! \n\n${randomWords}\n`);
+          let count = 0;
+          while(userGuess){
+            
+          let myChoice = Math.floor(Math.random() * randomWords.length);
+          let myGuessed = randomWords[myChoice];
+
+          correctGuess = myGuessed == userGuess.toLowerCase();
+          count += 1;
+          if(correctGuess) {
+            alert('Congratulations! You guessed correctly. Number of guesses: ' + count);
+            break;
+          }else{
+            userGuess = prompt(`Please try again. \n\nWe picked : ${myGuessed.toUpperCase()} \nYour guess is: ${userGuess.toUpperCase()} Number of guesses so far ${count} \n\n${randomWords}`);
+          }
+
+
+          }
+        }
+
+
+    </script>
+
+</body>
+</html>
